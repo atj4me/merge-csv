@@ -1,4 +1,4 @@
-name: Deploy
+name: Update the AppScripts
 
 on:
   push:
@@ -25,7 +25,8 @@ jobs:
       - name: List files in current directory
         run: ls -la
 
-      - run: |
+      - name: Decrypting CLASP Token
+        run: |
           gpg \
             --quiet --batch --yes --decrypt --passphrase="${{ secrets.CLASP_PASSPHRASE }}" \
             --output $HOME/.clasprc.json .clasprc.json.gpg
