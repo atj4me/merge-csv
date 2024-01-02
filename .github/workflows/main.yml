@@ -20,7 +20,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install @google/clasp
 
       - name: List files in current directory
         run: ls -la
