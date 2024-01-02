@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - run: |
+          gpg \
+            --quiet --batch --yes --decrypt --passphrase="${{ secrets.CLASP_PASSPHRASE }}" \
+            --output $HOME/.clasprc.json .clasprc.json.gpg
       - name: Checkout code
         uses: actions/checkout@v2
 
