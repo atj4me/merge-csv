@@ -31,4 +31,4 @@ jobs:
             --output $HOME/.clasprc.json .clasprc.json.gpg
             
       - name: Deploy to Apps Script
-        run: npx clasp push
+        run: bash ./deploy.sh
