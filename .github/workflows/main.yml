@@ -11,10 +11,6 @@ jobs:
 
     steps:
 
-      - run: |
-          gpg \
-            --quiet --batch --yes --decrypt --passphrase="${{ secrets.CLASP_PASSPHRASE }}" \
-            --output $HOME/.clasprc.json .clasprc.json.gpg
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -26,8 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: List files in current directory
+      run: ls -la
+
+      - run: |
+          gpg \
+            --quiet --batch --yes --decrypt --passphrase="${{ secrets.CLASP_PASSPHRASE }}" \
+            --output $HOME/.clasprc.json .clasprc.json.gpg
+            
       - name: Deploy to Apps Script
         run: npx clasp push
-        env:
-          CLASP_TOKEN_DIR: ${{ github.workspace }}
-          CLASP_TOKEN: ${{ secrets.CLASP_TOKEN }}
