@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: List files in current directory
-      run: ls -la
+        run: ls -la
 
       - run: |
           gpg \
