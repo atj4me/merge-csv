@@ -1,3 +1,7 @@
+/**
+ * File: MergeCSV.js
+ * Purpose: Merges CSV files in a folder "CSV" to the current spreadsheet
+ */
 function mergeCsvFiles() {
   // Get the current spreadsheet
   var currentSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
